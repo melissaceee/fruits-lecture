@@ -1,0 +1,3 @@
+[submodule "fruits-lecture"]
+	path = fruits-lecture
+	url = https://github.com/melissaceee/fruits-lecture.git

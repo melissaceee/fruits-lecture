@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= fruit.name %></title>
+</head>
+<body>
+    <h1>This is a <%= fruit.name %></h1>
+    <p>This fruit is <%= fruit.color %>.</p>
+    <p>
+        <% if (fruit.readyToEat) { %>
+            This fruit is ripe and ready to eat!
+        <% } else { %>
+            Give it some more time, it's not quite ready yet.
+        <% } %>
+    </p>
+
+    <!-- Form to update the fruit -->
+    <form action="/fruits/<%= fruit._id %>?_method=PUT" method="POST">
+        <label for="name">Name of Fruit:</label>
+        <input type="text" name="name" id="name" value="<%= fruit.name %>" required>
+
+        <label for="color">Color of Fruit:</label>
+        <input type="text" name="color" id="color" value="<%= fruit.color %>" required>
+
+        <label for="readyToEat">Ready to Eat:</label>
+        <input type="checkbox" name="readyToEat" id="readyToEat" <%= fruit.readyToEat ? 'checked' : '' %>>
+
+        <button type="submit">Update Fruit</button>
+    </form>
+
+    <!-- Form to delete the fruit -->
+    <form action="/fruits/<%= fruit._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete This Fruit</button>
+    </form>
+
+    <a href="/fruits">Back to All Fruits</a>
+</body>
+</html>
